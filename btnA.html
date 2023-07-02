@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  
+    <title>Button</title>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+
+    <script>
+        let btnA = {
+            text: "Apply",
+            backgroundColor: "black",
+            colorText: "white",
+
+            render: function (){
+                let html = `
+                    <button
+                    onclick = "btnA.clickHandler()"
+                    style = "background-color: ${this.backgroundColor}; color:${this.colorText}"
+                    >
+                    ${this.text}                        
+                    </button>
+                `
+                return html
+            },
+
+            clickHandler() {
+                alert("button has clicked")
+            }
+
+        }
+
+        let html = btnA.render()
+
+        container.innerHTML = html 
+
+
+
+
+    </script>
+</body>
+</html>
