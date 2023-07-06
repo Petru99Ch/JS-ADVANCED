@@ -1,4 +1,4 @@
- class User {
+class User {
 
     static users = [ ] // static  ---> class
     friends = [] // non-static ----> Own Prorpietes (dynamic)
@@ -13,21 +13,43 @@
             console.error("ERROR : Username must be at least two characters")
         }
     
-        if(typeof email == "string" && email.length >= 6 &&  email.indexOf("@") < email.indexOf(".")  )  {
-            this.email = email
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){ // regular expression for email
+            if(email.length >= 2){
+                this.email = email
+            } else{
+                console.error ("ERROR : Email must be at least two characters")
+            }
         } else {
-            console.error ( "ERROR : Username must be at least two characters and respected email rules(email@.example)")
+            console.error ( "ERROR : Must be respected email rules(email@.example)")
         }         
         
-        
-        for(let i = 0; i < password.length; i++){
-            if(typeof password == "string" && password.length >= 8 && password[i] == password[i].toUpperCase() || password[i] == password[i].toLowerCase()){
-                this.password = password
-            } else {
-                // this.password = password
-               console.error ( "ERROR : Username must be at least 8 characters")
-            }   
-        } 
+      
+       if(typeof password == "string"){                     // type of string
+            if(password != "") {                            // is not emtpy
+                if (password.length >= 8){                  // >= 8 character
+                    if(/[A-Z]/.test(password)){             // check UpperCase
+                        if(/[a-z]/.test(password)) {        // check LowerCase
+                            if(/[0-9]/.test(password)){     // Check number
+                                this.password = password
+                            }else {
+                                console.error("ERROR: the password password must contain numbers")
+                           }
+                        }else {
+                            console.error("ERROR:  the password must contain small letters")
+                       }
+                    }else {
+                        console.error("ERROR: the password password must contain capital letters")
+                   }
+                } else {
+                    console.error("ERROR: the password must be 8 characters ")
+               }
+            }    else {
+                console.error("ERROR: the password should NOT Empty")
+           }
+         } else {
+            console.error("ERROR: the type of the password should be String")
+       }
+            
 
         // register the user in the common users list
 
@@ -82,4 +104,3 @@
        return User.users.find(e => e.email === email )
     } 
 }
-
