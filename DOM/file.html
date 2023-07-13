@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>DOM tree</title>
+    </head>
+    <body>
+        <h1 id="title">DOM tree</h1>
+        <ul class="items">
+            <li>getElementByID</li>
+            <li>getElementsByClassName</li>
+            <li>getElementsByTagName</li>
+        </ul>
+
+        <script>
+
+            // HW: print into console text from each <li>
+
+            // 1 variant
+            console.log(document.getElementsByTagName("li")[0].innerHTML)
+            console.log(document.getElementsByTagName("li")[1].innerHTML)
+            console.log(document.getElementsByTagName("li")[2].innerHTML)
+
+            // 2 variant
+            console.log(document.querySelector("li:first-child").innerHTML)
+            console.log(document.querySelector("li:nth-child(2)").innerHTML)
+            console.log(document.querySelector("li:last-child").innerHTML)
+        </script>
+    </body>
+</html>
