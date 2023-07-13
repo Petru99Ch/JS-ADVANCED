@@ -1,0 +1,75 @@
+
+<!DOCTYPE HTML>
+<html>
+<body>
+  <form name="search">
+    <label>Search the site:
+      <input type="text" name="search">
+    </label>
+    <input type="submit" value="Search!">
+  </form>
+
+  <hr>
+
+  <form name="search-person">
+    Search the visitors:
+    <table id="age-table">
+      <tr>
+        <td>Age:</td>
+        <td id="age-list">
+          <label>
+            <input type="radio" name="age" value="young">less than 18</label>
+          <label>
+            <input type="radio" name="age" value="mature">18-50</label>
+          <label>
+            <input type="radio" name="age" value="senior">more than 50</label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Additionally:</td>
+        <td>
+          <input type="text" name="info[0]">
+          <input type="text" name="info[1]">
+          <input type="text" name="info[2]">
+        </td>
+      </tr>
+
+    </table>
+
+    <input type="submit" value="Search!">
+  </form>
+
+  <script>
+    /*
+        Как найти?…
+
+            1. Таблицу с id="age-table".
+            2. Все элементы label внутри этой таблицы (их три).
+            3. Первый td в этой таблице (со словом «Age»).
+            4. Форму form с именем name="search".
+            5. Первый input в этой форме.
+            6. Последний input в этой форме.
+    
+    */
+
+
+    // 1
+    console.log (window['age-table'])
+
+    // 2
+    console.log (window['age-table'].getElementsByTagName("label"))
+
+    // 3 
+    console.log(window['age-table'].querySelector("tr > td"))
+
+    // 4
+    console.log (document.getElementsByName("search"))
+
+    // 5
+    console.log(window['age-table'].querySelector("tr:last-child td:last-child input:last-child"))
+    
+
+  </script>
+</body>
+</html>
