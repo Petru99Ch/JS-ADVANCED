@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Style toggling</title>
+
+    <style>
+        body {
+            background-color: #444;
+            color: #fff;
+            font-family: sans-serif;
+        }
+
+        button {
+            background-color: #556;
+            color: #fff;
+            border: 1px solid transparent;
+            padding: 2em;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 120px;
+            transition: .5s;
+            
+        }
+
+        p {
+            display: inline-block;
+            padding: 1em; 
+            border-radius: 10px;
+            width: 210px;
+            transition: .5s;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">
+        I AGREE
+    </button>
+    <!-- HW1 : using html, css, js 
+            make it so the text style also changes when the user agrees 
+    -->
+   <p>with the terms and conditions</p>  
+
+    <script>
+        // 1. Search for the button object
+
+        let btn = document.getElementById("btn")
+        let textConditions = document.getElementsByTagName("p")[0]
+
+        // 1.b set initial inline style
+        btn.style.background = "#556"
+        textConditions.style = "background: #556;"
+
+        // remeber the button state 
+        let btnClicked = false
+
+        // 2. bind a function to the click event
+
+        btn.onclick = function(){
+            if(btnClicked){
+                btnClicked = false 
+                btn.innerText = "AGREED"
+                btn.style.background = "lightgreen"
+
+                textConditions.style = "background: lightgreen;"
+            } else {
+                btnClicked = true
+                btn.innerText = "I AGREE"
+                btn.style.background = "#556"
+
+                textConditions.style = "background: #556;"
+            }
+        }
+    </script>
+</body>
+</html

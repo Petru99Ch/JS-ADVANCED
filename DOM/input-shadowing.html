@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>INPUT SHADOWING</title>
+    <style>
+
+        
+        input {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input id="textBox" class="inputs" type="text" placeholder="enter some phrasess ...">
+
+    <div>
+        here the script will output what the user inputs
+    </div>
+
+    <script>
+        //  1. find the input 
+        let input = document.getElementsByTagName("input")[0]
+        let div = document.getElementsByTagName("div")[0]
+        //  HW1 : find the input using at least 3 more ways
+        input = document.querySelector("input")
+        input = document.getElementById("textBox")
+        input = document.getElementsByClassName("inputs")[0]
+
+        // 2 . bind to event 
+       
+         
+            // HW2: if the entered phrase contains at least 1 word 
+            // from the keywords array, the write " found " + keyword in the div
+        let kewords = [
+            "what", "is","html", "here", "go"
+        ]
+        input.onkeyup = function (){
+            let phrase = input.value
+            div.innerText = phrase 
+            let textArray = [ ]
+            
+
+            for ( let i = 0; i <= kewords.length; i++){
+                if( div.innerText.includes(`${kewords[i]}`)){
+                    textArray.push(kewords[i])                     
+                } 
+            }
+                div.innerText = "Found: "  + textArray
+
+        }
+
+    </script>
+</body>
+</html>
