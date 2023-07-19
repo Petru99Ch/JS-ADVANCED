@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>DYNAMIC FORM</title>
+    <style>
+        body {
+            background-color: #667;
+            font-family: sans-serif;
+        }
+        form {
+            border: 1px solid #aaa;
+            background-color: #990;
+            width: 250px;
+            padding: 20px;
+            margin: 100px auto;
+        }
+        form input, form button {
+            margin: 10px 0;
+            padding: 10px;
+        }
+    </style>
+        
+</head>
+<body>
+    <form action="#">
+        
+        <h1>Your contact information</h1>
+        
+        <div>
+            <input type="text" placeholder="phone number 1">
+        </div>
+        <div>
+            <button>+</button>
+            <button>SAVE</button>
+        </div>
+    </form>
+
+
+    <script>
+       
+        let number = 1
+        // event callback
+        const addPhoneField = () =>{
+            // HW1: add couting to phone number and limit the total count to five 
+
+            number++
+
+            // pure OOP aproach 
+           
+            if(number <= 5){
+                let input = document.createElement("input")
+
+                input.type="text"
+                input.placeholder = `phone number ${number}`
+                document.forms[0].children[1].appendChild(input)
+            } 
+        }
+
+        // event binding 
+        document.forms[0].children[2].firstElementChild.onclick = addPhoneField
+
+
+    </script>
+</body>
+</html>
