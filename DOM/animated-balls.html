@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Animated Balls</title>
+
+    <style>
+        body{
+            background-color: #669;
+            text-align: center;
+        }
+
+        #box {
+            width: 500px;
+            height: 500px;
+            margin: 200px auto 0 auto;
+            background-color: #fff;
+            border: 2px solid black;
+            position: relative;
+        }
+
+        #box .ball {
+            
+            
+            border-radius: 100%;
+            border: 1px solid #777;
+
+            position: absolute;
+
+            animation: moveBall 10s infinite;
+            animation-direction: alternate;
+        }
+
+        button {
+            margin: 20px;
+            padding: 20px;
+
+        }
+
+        @keyframes moveBall {
+            10% {top: 0 ; left:0}
+            35% {top: 89%; left: 89%}
+            75% {top: 89%; left:0}
+            100% { top:0; left: 89%}
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="box">
+       
+    </div>
+        <button>+</button>
+
+    <script>
+        const addBall = function () {
+            // random value
+            let leftC = Math.random() * 89
+            let topC = Math.random() * 89
+            let red = Math.random() * 250
+            let green = Math.random() * 250
+            let blue = Math.random() * 250
+
+            //  HW: random size 
+            let size = (Math.random() * 50 ) + 10
+           
+
+
+
+            let ball = document.createElement("div")
+            ball.className = "ball"
+            document.getElementById("box").appendChild(ball)
+            ball.style = `
+                    left: ${leftC}%;
+                    top: ${topC}%;
+                    background-color: rgb(${red}, ${green}, ${blue});
+                    width: ${size}px;
+                    height: ${size}px;
+            `
+        }
+
+        document.querySelector("button").onclick = addBall
+    </script>    
+
+    
+</body>
+</html>
