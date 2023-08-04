@@ -1,0 +1,35 @@
+body{
+    background-color: #123;
+    overflow: hidden;
+
+    background-image: url(bg.jpg);
+    background-position: center;
+    background-size: cover;
+
+    background-blend-mode:overlay;
+  
+
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+}
+
+.snow{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.snow .flake {
+    position: absolute;
+   
+    border-radius: 100%;
+    /* background-image: radial-gradient(white, transparent 40%);  */
+}
+
+@keyframes fall {
+    to {
+        top:100%
+    }
+}
