@@ -3,46 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>COOKIES</title>
+
     <style>
-
-        body{
-            background-color: #333;
+        input {
+            display: block;
         }
-        .space {
-            height: 200px;
-        }
-
-        .box, .boxX {
-            width: 500px;
-            height: 200px;
-            background-color: #356;
-            margin-bottom: 20px;
-            border: 5px solid red;
-        }
-
-
     </style>
 </head>
 <body>
+
+    <div id="content">
+        <h1>Private Membership</h1>
+        <h2>Acces Denied</h2>
+        <h3>Please <button>SIGN IN</button> to get acces</h3>
+    </div>
     
 
-    <div class="space"></div>
-    
-    <div data-effect="fade" class="box"></div>
+    <script>
 
-    <div class="space"></div>    
+         let content = document.getElementById('content')
+         let button = document.querySelector('#content button')
 
-    <div data-effect="slideLeft" class="box"></div>
+      
 
-    <div class="space"></div>    
+        const users = [
+            {username : 'user1' , password: '123'},
+            {username : 'user2' , password: '123'},
+            {username : 'user3' , password: '123'},            
+            ]
 
-    <div data-effect="slideRight"  class="boxX"></div>
+        const showF = () => {
+
+                content.innerHTML = ``
+
+                let form = document.createElement('form')
+                content.appendChild(form)
+
+                let labelFirst = document.createElement('label')
+                let labelSecond = document.createElement('label')
+                form.appendChild(labelFirst)
+                form.appendChild(labelSecond)
+
+                let inputUsername = document.createElement('input')
+                inputUsername.type = 'text'
+                inputUsername.placeholder = 'username'
+                labelFirst.appendChild(inputUsername)
+
+                let inputPass = document.createElement('input')
+                inputPass.type = 'password'
+                inputPass.placeholder = 'password'
+                labelSecond.appendChild(inputPass)
+
+                let buttonEnter = document.createElement('button')
+                buttonEnter.innerText = 'ENTER'
+                form.appendChild(buttonEnter)
+                buttonEnter.addEventListener('click', signIn, event)
+        }
+
+        button.addEventListener('click', showF)
+
+        const signIn = (e) => {
+            e.preventDefault()
+
+            let userinput = document.querySelector('form input[placeholder = "username"]')
+            let passinput = document.querySelector('form input[placeholder = "password"]')
+
+            let username = userinput.value
+            let password = passinput.value
+
+            // console.log(username, password)
+
+            let user = users.find( user => user.username == username && user.password == password)
+
+            // for(let i=0 ; i < users.length; i++) {
+                
+            //     if(users[i].username == username && users[i].password == password){
+            //         let user = users[i].username
+            //         showGreting(user)
+            //         let now = new Date()
+            //         now.setTime(now.getTime() + 24 *  3600 * 1000)
+            //         document.cookie = `username=${user}; expires=${now.toUTCString()}`
+            //     } else {
+            //         showMessage("Wrong credentials!!")
+            //     }
+            // }
 
 
-    
 
-    <script src="app.js"></script>
+            if(user != undefined) {
+                showGreting(user)
+                let now = new Date()
+                now.setTime(now.getTime() + 24 *  3600 * 1000)
+                document.cookie = `username=${user.username}; expires=${now.toUTCString()}`
+            } else {
+                showMessage("Wrong credentials!!")
+            }
 
+        }
+        
+        
+        const showGreting = (user) => {
+            content.innerHTML = ``
+            let accesed = document.createElement('h1')
+            accesed.innerText = `Hello, ${user.username}!`
+            content.appendChild(accesed)
+        }
+
+        const showMessage = (message) => {
+            content.innerHTML = ``
+            let accesed = document.createElement('h2')
+            accesed.innerText = `${message}`
+            accesed.style.color = 'red'
+            content.appendChild(accesed)
+        }
+       
+       
+
+        
+    </script>
 </body>
 </html>
