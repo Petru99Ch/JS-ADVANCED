@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video player</title>
+</head>
+<body>
+    <video id="player" controls>
+
+        <source src="video.mp4" type="video/mp4">
+        <h2>Your browser does not support HTML 5 VIDEO</h2>
+    </video>
+
+    <script>
+        let player = document.getElementById('player')
+
+        
+
+        const saveState = (event) => {
+            localStorage.setItem('volume', player.volume)
+            localStorage.setItem('currentTime', player.currentTime)
+            localStorage.setItem('muted', player.muted)
+
+            // HW
+            localStorage.setItem('paused', player.paused)
+            
+        }
+
+        console.dir(player)
+        // event binding
+        player.addEventListener('volumechange', saveState)
+        player.addEventListener('seeked', saveState)
+        player.addEventListener('pause', saveState)
+        
+       
+       
+
+        const restoreState = () => {
+            player.volume = localStorage.getItem('volume')
+            player.currentTime = localStorage.getItem('currentTime')
+            player.muted = localStorage.getItem('muted')
+
+            //HW
+            player.paused = localStorage.getItem('pause')
+        }
+
+        window.addEventListener('load', restoreState)
+
+        // HW : restore the play/pause state 
+        
+    </script>
+</body>
+</html> 
