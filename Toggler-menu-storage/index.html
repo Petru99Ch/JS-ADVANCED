@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggler</title>
+    <style>
+        
+
+        #chat {
+            background-color: #333;
+            padding: 10px;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+
+        #chat button {
+            display: block;
+        }
+
+        #chat textarea {            
+            width: 200px;
+            height: 200px;
+            margin: 10px 0;
+        }
+
+        #chat:not(.open){
+            bottom: -252px;
+            width: 20px;
+        }
+       
+
+
+    </style>
+</head>
+<body>
+    <div id="chat">
+        <button class="toggler"></button>
+        <textarea></textarea>
+        <button>SEND</button>
+    </div>
+
+    <script>
+        window.onload = function(){
+            document
+                .getElementById('chat')
+                .addEventListener('click', toggleChat)
+        }
+        
+        
+
+        function icon(){
+            let togglerText = document.querySelector('.toggler')
+
+            // HW
+            if(chat.className == "open"){                
+                togglerText.innerText = 'X'
+            } else {
+                togglerText.innerText = '^'
+            }
+
+
+            // HW* : save icon
+            saveIcon(togglerText.innerText)
+        }
+
+
+
+        function toggleChat(e){
+            
+
+            if(e.target.className =='toggler'){
+                e.target.parentElement.classList.toggle('open') 
+                
+                saveChatState(e.target.parentElement.classList.item(0) )
+            }      
+            icon()
+            
+           
+        }
+
+        function saveChatState(state){
+            localStorage.setItem('chat_state', state) 
+                       
+        }
+
+        // HW* : save icon
+        function saveIcon(icon){
+            localStorage.setItem('icon', icon)
+        }
+
+        // HW
+
+        function restoreChatState(){
+
+            let togglerText = document.querySelector('.toggler')
+
+            if(localStorage.getItem('chat_state') =="open"){
+                chat.className = 'open'           
+            }           
+
+            // HW* : save icon
+            if(localStorage.getItem('icon') == "X"){
+                togglerText.innerText = "X"
+            } 
+            if(localStorage.getItem('icon') == "^") {
+                togglerText.innerText ="^"
+            }
+            
+            
+        }
+        window.addEventListener('load', restoreChatState)
+
+
+
+
+    </script>
+</body>
+</html>
