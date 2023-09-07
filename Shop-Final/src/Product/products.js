@@ -1,5 +1,5 @@
 const getProductFromAPI = () =>{
-    fetch('https://fakestoreapi.com/products')
+   return fetch('https://fakestoreapi.com/products')
             .then(res=>res.json())
             .then(json=> {
                 let products = json.map( data => new Product(
@@ -22,10 +22,68 @@ const getProductFromAPI = () =>{
 }
 
 
-const renderCatalog = () => {
-    
+const renderCatalog = (parentElement, products, page=1, perPage=4) => {
 
-    for(let i=0; i <= Product.all.length; i++){
-        createCard(i)
-    }
+    products
+        .slice ((page-1)* perPage, (page-1)* perPage + perPage )
+        .forEach(product => {
+            let cardDiv = createElement('article','card')
+            cardDiv.classList.add("col-lg-3")
+
+            let image = createElement('img', "image")
+            image.src=product.image
+            cardDiv.appendChild(image)
+
+            let category = createElement('h3' , "category")
+            category.innerText = product.category
+            cardDiv.appendChild(category)
+
+            let title = createElement('h2', 'title')
+            title.innerText = product.title
+            cardDiv.appendChild(title)
+
+            let description = createElement('p','description')
+            description.innerText = product.description
+            cardDiv.appendChild(description)
+
+            let price = createElement('div','price')
+            price.innerText = product.price.amount
+            let priceCurrency = createElement('span', "currency")
+            priceCurrency.innerText = "/USD"
+            price.appendChild(priceCurrency)
+            cardDiv.appendChild(price)
+
+            let rating = createElement('div', "rating")
+
+            let rate = createElement('span')
+            rate.innerText = product.rating.rate
+            
+            let star = createElement('i')
+            star.classList.add("fa-solid", "fa-star")
+            star.style="color: #fbf432; padding-right: 1rem;"
+            rate.appendChild(star)
+
+            let count = createElement('span')
+            count.innerText = '('+ product.rating.count + ')'
+            rate.appendChild(count)
+
+            rating.appendChild(rate)
+
+            cardDiv.appendChild(rating)
+
+            let addCart = createElement('button')
+            addCart.classList.add('btn',"btn-info","btn-custom") 
+            addCart.innerText = 'Add to Cart'
+            cardDiv.appendChild(addCart)
+
+
+
+
+
+            parentElement.appendChild(cardDiv)
+
+        })
+                                                            
+
 }
+
