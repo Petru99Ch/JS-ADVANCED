@@ -1,6 +1,6 @@
 body{
     font-family: 'Roboto', sans-serif;
-
+    
 }
 
 
@@ -62,4 +62,10 @@ body{
     margin-bottom: 1rem;
     width: 250px;
     margin: 10px auto;
+}
+
+#showCatalog{
+    width: 150px;
+    display: block;
+    margin: 100px auto;
 }

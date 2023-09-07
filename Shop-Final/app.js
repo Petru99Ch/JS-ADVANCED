@@ -1,6 +1,19 @@
+let catalogWrapper = document.getElementById('catalog-wrapper')
 window.onload =()=>{
-    getProductFromAPI()
-    // createCard(0)
+    getProductFromAPI()   
+    .then(()=> {
+        renderCatalog(catalogWrapper, Product.all, 1)
+    })
+    
 }
 
-setTimeout(renderCatalog , 1000)
+
+// Load paginator 
+let page = 1 
+function render(){
+    page++
+    renderCatalog(catalogWrapper, Product.all,  page )
+  
+}
+
+showCatalog.addEventListener('click', render)
