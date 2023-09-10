@@ -10,7 +10,7 @@ window.onload =()=>{
         renderCatalog(catalogWrapper, Product.all, 1, 4, (productID)=>{cart.addToCart(productID)})
     })
 
-    renderCart()
+    
     
 }
 
