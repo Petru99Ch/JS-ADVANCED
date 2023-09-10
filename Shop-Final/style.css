@@ -69,3 +69,40 @@ body{
     display: block;
     margin: 100px auto;
 }
+.nav-custom{
+    position: relative;
+}
+
+.nav a{
+    color: #222;
+}
+#itemCart{
+    position: relative;
+}
+
+#itemCart .items  {
+    
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: red;
+    border-radius: 100%;
+    font-size: .8em;
+}
+
+#itemCart .items .nominal{
+    width: 50%;
+    height: 50%;
+    font-size: .8em;
+    text-align: center;
+    color: #fff;
+    vertical-align: middle;
+}
+
+
+
