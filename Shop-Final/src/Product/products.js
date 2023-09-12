@@ -84,6 +84,8 @@ const getProductFromAPI = () =>{
              
              if(localStorage.getItem('product') != null){
                 nominal.innerText = JSON.parse(localStorage.getItem('product')).length
+
+                
              } else {
                 nominal.innerText = '0'
              }
