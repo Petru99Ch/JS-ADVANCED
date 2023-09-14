@@ -103,5 +103,30 @@ body{
     color: #fff;
     vertical-align: middle;
 }
+.list-custom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    font-size: 12px;
 
+    
+} 
 
+.list-position {
+    position: absolute;
+    z-index: 2;
+    top: 50px;
+    right: -100px;
+    display:none
+}
+
+.list-custom img{
+    height: 100px;
+    
+    
+}
+.list-custom h2 {
+    font-size: 12px;
+    /* overflow: hidden; */
+}
