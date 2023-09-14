@@ -22,7 +22,7 @@ const getProductFromAPI = () =>{
  }
  
  
- const renderCatalog = (parentElement, products, page=1, perPage=4, addToCartCallBack) => {
+ const renderCatalog = (parentElement, products, page=1, perPage=4, addToCartCallBack, renderCartcall) => {
  
      products
          .slice ((page-1)* perPage, (page-1)* perPage + perPage )
@@ -76,9 +76,9 @@ const getProductFromAPI = () =>{
              addCart.innerText = 'Add to Cart'
              cardDiv.appendChild(addCart)
  
- 
-             addCart.addEventListener("click", ()=>{addToCartCallBack(product.id)})
-
+             addCart.addEventListener("click", ()=>{addToCartCallBack(product.id, product.image, product.title)})
+             addCart.addEventListener('click',()=>{renderCartcall(product.image, product.title)} )
+             
             //  nominal cart
              let nominal = document.querySelector(".nominal")
              
@@ -97,5 +97,6 @@ const getProductFromAPI = () =>{
  
  }
 
+ 
 
  
